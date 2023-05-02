@@ -77,7 +77,7 @@
         {{ tag }}
       </button>
     </div>
-    <icon-grid :icons="filteredIcons" @select="selectIcon" />
+    <icon-grid :key="viewKey" :icons="filteredIcons" @select="selectIcon" />
     <icon-modal
       v-if="showModal"
       :svg-code="selectedIcon"
@@ -87,7 +87,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, ref, watch } from "vue";
 import { icons } from "../icons.config";
 import IconGrid from "./components/IconGrid.vue";
 import IconModal from "./components/IconModal.vue";
@@ -99,6 +99,7 @@ export default defineComponent({
     IconModal,
   },
   setup() {
+    const viewKey = ref(0);
     const searchTerm = ref("");
     const search = ref("");
     const selectedIcon = ref("");
@@ -148,6 +149,10 @@ export default defineComponent({
       "weather",
     ];
 
+    watch(searchTerm, () => {
+      viewKey.value += 1;
+    });
+
     return {
       icons,
       filteredIcons,
@@ -157,6 +162,7 @@ export default defineComponent({
       selectedIcon,
       showModal,
       tags,
+      viewKey,
     };
   },
 });
