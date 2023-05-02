@@ -2,7 +2,8 @@
   <img class="mx-auto h-12 mt-8 mb-2" src="./assets/logo.png" alt="Vue logo" />
   <h1 class="text-center text-xl mb-2">Vue SVG Icon Browser</h1>
   <div class="text-center font-medium text-sm">
-    A Vue 3 component for browsering svg icons by tony-nz
+    Vue SVG Icon Browser is a simple and user-friendly web application that<br />
+    allows you to browse and search through a collection of SVG icons by tony-nz
     <span class="text-xs text-gray-400">
       <a href="https://github.com/tony-nz/vue-svg-icon-browser" target="_blank"
         >Github</a
