@@ -71,7 +71,7 @@
         class="bg-gray-200 text-gray-400 px-4 py-1 rounded-md text-sm mr-2 mb-2"
         @click="searchTerm = tag"
         :class="{
-          'bg-emerald-200 text-gray-800 font-bold': searchTerm === tag,
+          'bg-slate-800 text-white font-bold': searchTerm === tag,
         }"
       >
         {{ tag }}
