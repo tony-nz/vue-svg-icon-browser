@@ -61,7 +61,7 @@
       <button
         class="bg-gray-200 text-gray-400 px-4 py-1 rounded-md text-sm mr-2 mb-2"
         @click="searchTerm = ''"
-        :class="{ 'bg-emerald-200 text-gray-800 font-bold': searchTerm === '' }"
+        :class="{ 'bg-slate-800 text-white font-bold': searchTerm === '' }"
       >
         all
       </button>
