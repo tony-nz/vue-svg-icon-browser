@@ -56,7 +56,12 @@
         </button>
       </div>
     </div>
-    <icon-grid :icons="filteredIcons" />
+    <icon-grid :icons="filteredIcons" @select="selectIcon" />
+    <icon-modal
+      v-if="showModal"
+      :svg-code="selectedIcon"
+      @close="showModal = false"
+    />
   </div>
 </template>
 
@@ -64,15 +69,19 @@
 import { computed, defineComponent, ref } from "vue";
 import { icons } from "../icons.config";
 import IconGrid from "./components/IconGrid.vue";
+import IconModal from "./components/IconModal.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     IconGrid,
+    IconModal,
   },
   setup() {
     const searchTerm = ref("");
     const search = ref("");
+    const selectedIcon = ref("");
+    const showModal = ref(false);
     const filteredIcons = computed(() => {
       if (searchTerm.value === "") {
         return icons;
@@ -80,12 +89,19 @@ export default defineComponent({
       const term = searchTerm.value.toLowerCase();
       return icons.filter((icon: any) => icon.toLowerCase().includes(term));
     });
+    const selectIcon = (icon: string) => {
+      showModal.value = true;
+      selectedIcon.value = icon;
+    };
 
     return {
       icons,
       filteredIcons,
       searchTerm,
       search,
+      selectIcon,
+      selectedIcon,
+      showModal,
     };
   },
 });

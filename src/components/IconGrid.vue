@@ -13,22 +13,13 @@
       />
       <span class="mt-2 text-sm font-medium text-gray-900">{{ icon }}</span>
     </div>
-    <icon-modal
-      v-if="showModal"
-      :svg-code="selectedIcon"
-      @close="showModal = false"
-    />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import IconModal from "./IconModal.vue";
 
 export default defineComponent({
   name: "IconGrid",
-  components: {
-    IconModal,
-  },
   props: {
     icons: {
       type: Array,
@@ -39,8 +30,7 @@ export default defineComponent({
       default: "icons",
     },
   },
-  setup(props) {
-    const showModal = ref(false);
+  setup(props, { emit }) {
     const selectedIcon = ref("");
 
     function showIcon(icon: any) {
@@ -48,16 +38,15 @@ export default defineComponent({
         .then((response) => response.text())
         .then((text) => {
           selectedIcon.value = text;
+          emit("select", selectedIcon.value);
         });
     }
 
     function selectIcon(icon: any) {
       showIcon(icon);
-      showModal.value = true;
     }
 
     return {
-      showModal,
       selectedIcon,
       selectIcon,
     };
