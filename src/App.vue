@@ -9,7 +9,7 @@
       >
     </span>
   </div>
-  <div class="mx-auto mt-8 max-w-6xl">
+  <div class="mx-auto mt-8 max-w-6xl p-4">
     <div
       class="flex items-center justify-between mb-4 border-gray-200 border-2 p-1"
     >
@@ -56,6 +56,26 @@
         </button>
       </div>
     </div>
+    <div class="mb-4 border-gray-200 border-2 p-2 whitespace-normal">
+      <button
+        class="bg-gray-200 text-gray-400 px-4 py-1 rounded-md text-sm mr-2 mb-2"
+        @click="searchTerm = ''"
+        :class="{ 'bg-emerald-200 text-gray-800 font-bold': searchTerm === '' }"
+      >
+        all
+      </button>
+      <button
+        v-for="tag in tags"
+        :key="tag"
+        class="bg-gray-200 text-gray-400 px-4 py-1 rounded-md text-sm mr-2 mb-2"
+        @click="searchTerm = tag"
+        :class="{
+          'bg-emerald-200 text-gray-800 font-bold': searchTerm === tag,
+        }"
+      >
+        {{ tag }}
+      </button>
+    </div>
     <icon-grid :icons="filteredIcons" @select="selectIcon" />
     <icon-modal
       v-if="showModal"
@@ -93,6 +113,40 @@ export default defineComponent({
       showModal.value = true;
       selectedIcon.value = icon;
     };
+    const tags = [
+      "abstract",
+      "arrows",
+      "art",
+      "clothes",
+      "code",
+      "coding",
+      "communication",
+      "cooking",
+      "design",
+      "devices",
+      "ecommerce",
+      "electric",
+      "electronics",
+      "fa",
+      "finance",
+      "food",
+      "general",
+      "graphs",
+      "home",
+      "interface",
+      "layout",
+      "list.txt",
+      "map",
+      "medicine",
+      "music",
+      "navigation",
+      "shopping",
+      "social",
+      "technology",
+      "text",
+      "tools",
+      "weather",
+    ];
 
     return {
       icons,
@@ -102,6 +156,7 @@ export default defineComponent({
       selectIcon,
       selectedIcon,
       showModal,
+      tags,
     };
   },
 });
