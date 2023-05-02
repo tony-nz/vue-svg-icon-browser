@@ -56,4 +56,4 @@ Distributed under the MIT License.
 [stars-url]: https://github.com/tony-nz/vue-svg-icon-browser/stargazers
 [issues-shield]: https://img.shields.io/github/issues/tony-nz/vue-svg-icon-browser.svg?style=for-the-badge
 [issues-url]: https://github.com/tony-nz/vue-svg-icon-browser/issues
-[product-screenshot]: src/assets/screenshot.png
+[product-screenshot]: src/assets/screenshot-01.png
