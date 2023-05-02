@@ -135,7 +135,6 @@ export default defineComponent({
       "home",
       "interface",
       "layout",
-      "list.txt",
       "map",
       "medicine",
       "music",
