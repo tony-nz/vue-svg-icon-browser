@@ -3,7 +3,7 @@
     <div
       v-for="(icon, index) in icons"
       :key="index"
-      class="flex flex-col items-center border-dashed border-2 border-gray-300 p-4 hover:bg-gray-200 cursor-pointer"
+      class="group flex flex-col items-center border-dashed border-2 border-gray-300 p-4 hover:bg-emerald-400 cursor-pointer"
       @click="selectIcon(icon)"
     >
       <img
@@ -11,7 +11,10 @@
         class="h-8 w-8 vue-logo-img"
         :data-src="path + '/' + icon"
       />
-      <span class="mt-2 text-sm font-medium text-gray-900">{{ icon }}</span>
+      <span
+        class="mt-2 text-sm font-medium text-gray-500 group-hover:text-white"
+        >{{ icon }}</span
+      >
     </div>
   </div>
 </template>
