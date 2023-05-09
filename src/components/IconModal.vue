@@ -5,7 +5,7 @@
     <div class="bg-white p-4 rounded-lg shadow-lg mx-auto max-w-6xl">
       <pre
         class="bg-slate-800 text-white"
-      ><code class="whitespace-pre-wrap"><highlightjs id="icon-code" autodetect :code="svgCode" /></code></pre>
+      ><code class="whitespace-pre-wrap"><highlightjs id="icon-code" autodetect :code="formattedCode" /></code></pre>
       <button
         class="mt-4 bg-gray-300 hover:bg-gray-400 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
         @click="$emit('close')"
@@ -30,6 +30,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import prettier from "prettier";
+import xmlParser from "@prettier/plugin-xml";
 
 export default defineComponent({
   name: "IconModal",
@@ -51,11 +53,16 @@ export default defineComponent({
       }
     },
   },
-  setup() {
+  setup(props) {
     const copied = ref(false);
+    const formattedCode = prettier.format(props.svgCode, {
+      parser: "xml",
+      plugins: [xmlParser],
+    });
 
     return {
       copied,
+      formattedCode,
     };
   },
 });

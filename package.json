@@ -17,6 +17,7 @@
     "vue-svg-inline-plugin": "^2.2.3"
   },
   "devDependencies": {
+    "@prettier/plugin-xml": "github:prettier/plugin-xml",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
