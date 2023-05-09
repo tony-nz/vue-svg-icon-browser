@@ -2,7 +2,11 @@
   <div
     class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
   >
-    <div class="bg-white p-4 rounded-lg shadow-lg mx-auto max-w-6xl">
+    <div class="bg-white p-4 rounded-lg shadow-lg mx-auto max-w-2xl max-h-full">
+      <div class="group flex flex-col items-center p-4">
+        <img v-svg-inline class="h-8 w-8 vue-logo-img" :data-src="icon" />
+        <span class="mt-2 text-sm font-medium text-gray-500">{{ icon }}</span>
+      </div>
       <pre
         class="bg-slate-800 text-white"
       ><code class="whitespace-pre-wrap"><highlightjs id="icon-code" autodetect :code="formattedCode" /></code></pre>
@@ -37,6 +41,10 @@ export default defineComponent({
   name: "IconModal",
   props: {
     svgCode: {
+      type: String,
+      required: true,
+    },
+    icon: {
       type: String,
       required: true,
     },

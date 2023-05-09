@@ -80,7 +80,8 @@
     <icon-grid :key="viewKey" :icons="filteredIcons" @select="selectIcon" />
     <icon-modal
       v-if="showModal"
-      :svg-code="selectedIcon"
+      :svg-code="selectedSvgCode"
+      :icon="'icons/' + selectedIcon"
       @close="showModal = false"
     />
   </div>
@@ -103,6 +104,7 @@ export default defineComponent({
     const searchTerm = ref("");
     const search = ref("");
     const selectedIcon = ref("");
+    const selectedSvgCode = ref("");
     const showModal = ref(false);
     const filteredIcons = computed(() => {
       if (searchTerm.value === "") {
@@ -111,9 +113,10 @@ export default defineComponent({
       const term = searchTerm.value.toLowerCase();
       return icons.filter((icon: any) => icon.toLowerCase().includes(term));
     });
-    const selectIcon = (icon: string) => {
+    const selectIcon = (svgCode: string, icon: string) => {
       showModal.value = true;
       selectedIcon.value = icon;
+      selectedSvgCode.value = svgCode;
     };
     const tags = [
       "abstract",
@@ -160,6 +163,7 @@ export default defineComponent({
       search,
       selectIcon,
       selectedIcon,
+      selectedSvgCode,
       showModal,
       tags,
       viewKey,

@@ -34,14 +34,14 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
-    const selectedIcon = ref("");
+    const svgCode = ref("");
 
     function showIcon(icon: any) {
       fetch(`${props.path}/${icon}`)
         .then((response) => response.text())
         .then((text) => {
-          selectedIcon.value = text;
-          emit("select", selectedIcon.value);
+          svgCode.value = text;
+          emit("select", svgCode.value, icon);
         });
     }
 
@@ -50,7 +50,6 @@ export default defineComponent({
     }
 
     return {
-      selectedIcon,
       selectIcon,
     };
   },
