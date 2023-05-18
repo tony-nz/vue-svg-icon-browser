@@ -111,7 +111,7 @@ export default defineComponent({
         return icons;
       }
       const term = searchTerm.value.toLowerCase();
-      return icons.filter((icon: any) => icon.toLowerCase().includes(term));
+      return icons.filter((icon: string) => icon.toLowerCase().includes(term));
     });
     const selectIcon = (svgCode: string, icon: string) => {
       showModal.value = true;

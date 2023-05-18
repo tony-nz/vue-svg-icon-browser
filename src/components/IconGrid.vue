@@ -36,7 +36,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const svgCode = ref("");
 
-    function showIcon(icon: any) {
+    function showIcon(icon: string) {
       fetch(`${props.path}/${icon}`)
         .then((response) => response.text())
         .then((text) => {
@@ -45,7 +45,7 @@ export default defineComponent({
         });
     }
 
-    function selectIcon(icon: any) {
+    function selectIcon(icon: string) {
       showIcon(icon);
     }
 
